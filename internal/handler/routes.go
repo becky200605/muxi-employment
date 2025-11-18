@@ -29,6 +29,12 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Handler: private.ChattingHandler(serverCtx),
 			},
 			{
+				// 上传图片
+				Method:  http.MethodPost,
+				Path:    "/chatting/:npcName",
+				Handler: private.ChattingUploadHandler(serverCtx),
+			},
+			{
 				// 最初
 				Method:  http.MethodGet,
 				Path:    "/origin",

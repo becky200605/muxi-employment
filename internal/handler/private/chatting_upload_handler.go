@@ -1,7 +1,6 @@
 package private
 
 import (
-	"github.com/zeromicro/go-zero/core/logx"
 	"net/http"
 
 	"github.com/zeromicro/go-zero/rest/httpx"
@@ -10,19 +9,21 @@ import (
 	"muxi-empolyment/internal/types"
 )
 
-// 获取图片
-func AssetHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+// 上传图片
+func ChattingUploadHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		var req types.AssetPathReq
+		var req types.ChattingUploadRequest
 		if err := httpx.Parse(r, &req); err != nil {
 			httpx.ErrorCtx(r.Context(), w, err)
 			return
 		}
 
-		l := private.NewAssetLogic(r.Context(), svcCtx)
-		err := l.Asset(w, r, &req)
+		l := private.NewChattingUploadLogic(r.Context(), svcCtx)
+		resp, err := l.ChattingUpload(&req)
 		if err != nil {
-			logx.Errorf("AssetHandler error: %v", err)
+			httpx.ErrorCtx(r.Context(), w, err)
+		} else {
+			httpx.OkJsonCtx(r.Context(), w, resp)
 		}
 	}
 }

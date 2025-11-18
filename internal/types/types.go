@@ -3,8 +3,16 @@
 
 package types
 
+type AssetPathReq struct {
+	ImageId string `path:"imageId"`
+}
+
 type AssetResponse struct {
 	Info
+}
+
+type ChattingPathReq struct {
+	NpcName string `path:"npcName"`
 }
 
 type ChattingResponse struct {
@@ -13,6 +21,7 @@ type ChattingResponse struct {
 }
 
 type ChattingUploadRequest struct {
+	ChattingPathReq
 	File string `form:"file,optional"`
 }
 

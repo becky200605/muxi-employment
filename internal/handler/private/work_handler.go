@@ -8,7 +8,7 @@ import (
 	"muxi-empolyment/internal/svc"
 )
 
-// 工作
+// WorkHandler 工作
 func WorkHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		l := private.NewWorkLogic(r.Context(), svcCtx)

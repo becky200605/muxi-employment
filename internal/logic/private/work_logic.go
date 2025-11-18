@@ -26,6 +26,11 @@ func NewWorkLogic(ctx context.Context, svcCtx *svc.ServiceContext) *WorkLogic {
 
 func (l *WorkLogic) Work() (resp *types.Response, err error) {
 	// todo: add your logic here and delete this line
-
-	return
+	return &types.Response{
+		Code:    200,
+		Message: "success",
+		Data: &types.WorkResponse{
+			Info: types.Info{Information: "你工作了一天，但这好像没有什么好消息，你还要继续工作吗？"},
+		},
+	}, nil
 }

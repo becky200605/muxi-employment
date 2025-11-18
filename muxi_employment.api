@@ -54,7 +54,11 @@ type (
 )
 
 type (
+	ChattingPathReq {
+		npcName string `path:"npcName"`
+	}
 	ChattingUploadRequest {
+		ChattingPathReq
 		file string `form:"file,optional"`
 	}
 )
@@ -63,6 +67,12 @@ type (
 	ChattingResponse {
 		Info
 		Tips
+	}
+)
+
+type (
+	AssetPathReq {
+		imageId string `path:"imageId"`
 	}
 )
 
@@ -125,11 +135,15 @@ service muxiEmployment {
 
 	@doc "聊天"
 	@handler Chatting
-	get /chatting/:npcName returns (Response)
+	get /chatting/:npcName (ChattingPathReq) returns (Response)
+
+	@doc "上传图片"
+	@handler ChattingUpload
+	post /chatting/:npcName (ChattingUploadRequest) returns (Response)
 
 	@doc "获取图片"
 	@handler Asset
-	get /asset/:imageId returns (Response)
+	get /asset/:imageId (AssetPathReq) returns (Response)
 
 	@doc "Ping"
 	@handler Ping
