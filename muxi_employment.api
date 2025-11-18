@@ -1,0 +1,142 @@
+syntax = "v1"
+
+info (
+	title: "木犀员工"
+	desc:  "木犀员工相关接口"
+)
+
+type (
+	Info {
+		information string `json:"information"`
+	}
+	Tips {
+		tips string `json:"tips"`
+	}
+)
+
+type (
+	StartResponse {
+		Info
+		Tips
+	}
+)
+
+type (
+	LogResponse {
+		Info
+		Tips
+		logs []string `json:"logs"`
+	}
+)
+
+type (
+	LoginRequest {
+		username string `json:"username"`
+		password string `json:"password"`
+	}
+)
+
+type (
+	LoginGETResponse {
+		Info
+		Tips
+	}
+	LoginPOSTResponse {
+		Info
+		token string `json:"token"`
+	}
+)
+
+type (
+	WorkResponse {
+		Info
+	}
+)
+
+type (
+	ChattingUploadRequest {
+		file string `form:"file,optional"`
+	}
+)
+
+type (
+	ChattingResponse {
+		Info
+		Tips
+	}
+)
+
+type (
+	AssetResponse {
+		Info
+	}
+)
+
+type (
+	PingResponse {
+		Info
+		Tips
+	}
+)
+
+type (
+	OriginResponse {
+		Info
+	}
+)
+
+type (
+	Response {
+		code    int64       `json:"code"`
+		message string      `json:"message"`
+		data    interface{} `json:"data"`
+	}
+)
+
+@server (
+	group: "public"
+)
+service muxiEmployment {
+	@doc "开始"
+	@handler Start
+	get /start returns (Response)
+
+	@doc "获取日志"
+	@handler Log
+	get /debug/log returns (Response)
+
+	@doc "登录"
+	@handler LoginGet
+	get /login returns (Response)
+
+	@doc "登录"
+	@handler LoginPost
+	post /login (LoginRequest) returns (Response)
+}
+
+@server (
+	jwt:   Auth
+	group: "private"
+)
+service muxiEmployment {
+	@doc "工作"
+	@handler Work
+	get /work returns (Response)
+
+	@doc "聊天"
+	@handler Chatting
+	get /chatting/:npcName returns (Response)
+
+	@doc "获取图片"
+	@handler Asset
+	get /asset/:imageId returns (Response)
+
+	@doc "Ping"
+	@handler Ping
+	get /ping returns (Response)
+
+	@doc "最初"
+	@handler Origin
+	get /origin returns (Response)
+}
+
