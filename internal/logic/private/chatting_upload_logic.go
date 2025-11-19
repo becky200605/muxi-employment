@@ -108,7 +108,7 @@ func (l *ChattingUploadLogic) ChattingUpload(w http.ResponseWriter, r *http.Requ
 			Code:    200,
 			Message: "success",
 			Data: &types.ChattingResponse{
-				Info: types.Info{Information: "\"不错嘛新人！你跟我一样，都是丝之歌信徒。\\n我听说Project-ORIGIN 的核心文件被内部人加密后上传到 /origin，但你需要正确的 token 形式 \\n 对于这个，我建议你可以去找 npc-security 聊聊\""},
+				Info: types.Info{Information: "不错嘛新人！你跟我一样，都是丝之歌信徒。我听说Project-ORIGIN 的核心文件被内部人加密后上传到 /origin，但你需要正确的 token 形式 对于这个，我建议你可以去找 npc-security 聊聊"},
 			},
 		})
 	} else {

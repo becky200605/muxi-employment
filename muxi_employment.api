@@ -7,10 +7,10 @@ info (
 
 type (
 	Info {
-		information string `json:"information"`
+		information string `json:"information,omitempty"`
 	}
 	Tips {
-		tips string `json:"tips"`
+		tips string `json:"tips,omitempty"`
 	}
 )
 
