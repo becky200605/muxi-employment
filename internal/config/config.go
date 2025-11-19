@@ -8,4 +8,9 @@ type Config struct {
 		AccessSecret string
 		AccessExpire int64
 	}
+	BASEURL string
+	User struct{
+		EncodedPassword string
+		Password string
+	}
 }

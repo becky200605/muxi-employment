@@ -7,32 +7,24 @@ info (
 
 type (
 	Info {
-		information string `json:"information"`
+		Information string `json:"information"`
 	}
 	Tips {
-		tips string `json:"tips"`
-	}
-)
-
-type (
-	StartResponse {
-		Info
-		Tips
+		Tips string `json:"tips"`
 	}
 )
 
 type (
 	LogResponse {
 		Info
-		Tips
-		logs []string `json:"logs"`
+		Logs []string `json:"logs"`
 	}
 )
 
 type (
 	LoginRequest {
-		username string `json:"username"`
-		password string `json:"password"`
+		Username string `json:"username"`
+		Password string `json:"password"`
 	}
 )
 
@@ -43,7 +35,7 @@ type (
 	}
 	LoginPOSTResponse {
 		Info
-		token string `json:"token"`
+		Token string `json:"token"`
 	}
 )
 
@@ -97,9 +89,9 @@ type (
 
 type (
 	Response {
-		code    int64       `json:"code"`
-		message string      `json:"message"`
-		data    interface{} `json:"data"`
+		Code    int64       `json:"code"`
+		Message string      `json:"message"`
+		Data    interface{} `json:"data"`
 	}
 )
 
@@ -109,7 +101,7 @@ type (
 service muxiEmployment {
 	@doc "开始"
 	@handler Start
-	get /start returns (Response)
+	get /start returns (string)
 
 	@doc "获取日志"
 	@handler Log

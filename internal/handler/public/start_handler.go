@@ -15,8 +15,9 @@ func StartHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 		resp, err := l.Start()
 		if err != nil {
 			httpx.ErrorCtx(r.Context(), w, err)
-		} else {
-			httpx.OkJsonCtx(r.Context(), w, resp)
-		}
+			return
+		} 
+		w.Header().Set("Content-Type","text/plain; charset=utf-8")
+		w.Write([]byte(resp))
 	}
 }
