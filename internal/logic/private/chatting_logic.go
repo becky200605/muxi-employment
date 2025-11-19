@@ -28,8 +28,8 @@ func NewChattingLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Chatting
 
 func (l *ChattingLogic) Chatting(req *types.ChattingPathReq) (resp *types.Response, err error) {
 	switch req.NpcName {
-	case "":
-		return Empty()
+	case "npc-helper":
+		return NpcHelper()
 	case "npc-lu":
 		return NpcLu()
 	case "npc-security":
@@ -39,7 +39,7 @@ func (l *ChattingLogic) Chatting(req *types.ChattingPathReq) (resp *types.Respon
 	}
 }
 
-func Empty() (resp *types.Response, err error) {
+func NpcHelper() (resp *types.Response, err error) {
 	return &types.Response{
 		Code:    200,
 		Message: "success",
@@ -54,7 +54,7 @@ func Empty() (resp *types.Response, err error) {
 func NpcLu() (resp *types.Response, err error) {
 	tipsOptions := []string{
 		"npc-lu 非常的忙碌，但是他很高兴看到一张 丝之歌的通关图片，最好是72小时通关的，这样他也许会告诉一些东西，也许你可以回忆一下日志的内容，顺便去 /asset/<image-id> 看看呢",
-		"也许你可以使用 post 方式将你获得的图片给 npc-lu 呢，请求体是 {\"image\":\"xxxx\"}",
+		"也许你可以用 POST 请求把图片发给 npc-lu —— 记得采用 multipart/form-data，并将你的图片放在字段名 file 中。",
 	}
 
 	rand.New(rand.NewSource(time.Now().UnixNano()))

@@ -7,10 +7,17 @@ info (
 
 type (
 	Info {
-		Information string `json:"information"`
+		information string `json:"information,omitempty"`
 	}
 	Tips {
-		Tips string `json:"tips"`
+		tips string `json:"tips,omitempty"`
+	}
+)
+
+type (
+	StartResponse {
+		Info
+		Tips
 	}
 )
 

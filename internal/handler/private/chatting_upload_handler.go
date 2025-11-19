@@ -1,6 +1,7 @@
 package private
 
 import (
+	"github.com/zeromicro/go-zero/core/logx"
 	"net/http"
 
 	"github.com/zeromicro/go-zero/rest/httpx"
@@ -19,11 +20,9 @@ func ChattingUploadHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 		}
 
 		l := private.NewChattingUploadLogic(r.Context(), svcCtx)
-		resp, err := l.ChattingUpload(&req)
+		err := l.ChattingUpload(w, r, &req)
 		if err != nil {
-			httpx.ErrorCtx(r.Context(), w, err)
-		} else {
-			httpx.OkJsonCtx(r.Context(), w, resp)
+			logx.Errorf("ChattingUploadHandler error: %v", err)
 		}
 	}
 }

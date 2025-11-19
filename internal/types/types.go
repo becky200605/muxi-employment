@@ -26,7 +26,7 @@ type ChattingUploadRequest struct {
 }
 
 type Info struct {
-	Information string `json:"information"`
+	Information string `json:"information,omitempty"`
 }
 
 type LogResponse struct {
@@ -65,7 +65,7 @@ type Response struct {
 }
 
 type Tips struct {
-	Tips string `json:"tips"`
+	Tips string `json:"tips,omitempty"`
 }
 
 type WorkResponse struct {
