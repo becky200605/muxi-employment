@@ -55,7 +55,7 @@ func (l *PingLogic) Ping(r *http.Request) (resp *types.Response, err error) {
 					Information:"访问太慢，检测到异常人员，已上报。",
 				},
 				Tips:types.Tips{
-					Tips:"想象一下保安为什么都能认出业主，因为他们不屑一顾（bushi）。一次一次请求太慢了，过于温柔了，是时候抛弃礼貌了",
+					Tips:"想象一下保安为什么都能认出业主，因为他们不屑一顾（bushi）。一次一次请求太慢了，过于温柔了，是时候抛弃礼貌了 --来自Mr.Lu",
 				},
 			},
 		}
@@ -70,7 +70,7 @@ func (l *PingLogic) Ping(r *http.Request) (resp *types.Response, err error) {
 					Information:"刷卡成功！你有权限访问 /origin 了",
 				},
 				Tips:types.Tips{
-					Tips:"token并非 jwt,而是 base64(base64(token))",
+					Tips:"Mr.Lu有些神秘要求，他希望你请求头中的token并非 jwt,而是 base64(base64(token))",
 				},
 			},
 		}

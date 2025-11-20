@@ -35,12 +35,6 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Handler: private.ChattingUploadHandler(serverCtx),
 			},
 			{
-				// 最初
-				Method:  http.MethodGet,
-				Path:    "/origin",
-				Handler: private.OriginHandler(serverCtx),
-			},
-			{
 				// Ping
 				Method:  http.MethodGet,
 				Path:    "/ping",
@@ -75,6 +69,12 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Method:  http.MethodPost,
 				Path:    "/login",
 				Handler: public.LoginPostHandler(serverCtx),
+			},
+			{
+				// 最初
+				Method:  http.MethodGet,
+				Path:    "/origin",
+				Handler: public.OriginHandler(serverCtx),
 			},
 			{
 				// 开始

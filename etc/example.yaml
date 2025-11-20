@@ -8,5 +8,4 @@ Auth:
    AccessSecret: "xxxx"
    AccessExpire: 86400
 User:
-   EncodedPassword: "your_encoded_password"
    Password: "your_password"

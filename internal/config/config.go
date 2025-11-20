@@ -10,7 +10,6 @@ type Config struct {
 	}
 	BASEURL string
 	User    struct {
-		EncodedPassword string
 		Password        string
 	}
 }

@@ -64,6 +64,11 @@ type Response struct {
 	Data    interface{} `json:"data"`
 }
 
+type StartResponse struct {
+	Info
+	Tips
+}
+
 type Tips struct {
 	Tips string `json:"tips,omitempty"`
 }

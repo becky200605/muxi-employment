@@ -121,6 +121,10 @@ service muxiEmployment {
 	@doc "登录"
 	@handler LoginPost
 	post /login (LoginRequest) returns (Response)
+
+	@doc "最初"
+	@handler Origin
+	get /origin returns (Response)
 }
 
 @server (
@@ -147,9 +151,5 @@ service muxiEmployment {
 	@doc "Ping"
 	@handler Ping
 	get /ping returns (Response)
-
-	@doc "最初"
-	@handler Origin
-	get /origin returns (Response)
 }
 
