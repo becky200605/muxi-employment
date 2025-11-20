@@ -14,8 +14,8 @@ type AuthMiddleware struct {
 	r   ijwt.JWTHandler
 }
 
-func NewAuthMiddleware(cfg config.Config, r ijwt.JWTHandler) AuthMiddleware {
-	return AuthMiddleware{
+func NewAuthMiddleware(cfg config.Config, r ijwt.JWTHandler) *AuthMiddleware {
+	return &AuthMiddleware{
 		Cfg: cfg,
 		r:   r,
 	}

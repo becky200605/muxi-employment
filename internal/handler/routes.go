@@ -15,38 +15,41 @@ import (
 
 func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 	server.AddRoutes(
-		[]rest.Route{
-			{
-				// 获取图片
-				Method:  http.MethodGet,
-				Path:    "/asset/:imageId",
-				Handler: private.AssetHandler(serverCtx),
-			},
-			{
-				// 聊天
-				Method:  http.MethodGet,
-				Path:    "/chatting/:npcName",
-				Handler: private.ChattingHandler(serverCtx),
-			},
-			{
-				// 上传图片
-				Method:  http.MethodPost,
-				Path:    "/chatting/:npcName",
-				Handler: private.ChattingUploadHandler(serverCtx),
-			},
-			{
-				// Ping
-				Method:  http.MethodGet,
-				Path:    "/ping",
-				Handler: private.PingHandler(serverCtx),
-			},
-			{
-				// 工作
-				Method:  http.MethodGet,
-				Path:    "/work",
-				Handler: private.WorkHandler(serverCtx),
-			},
-		},
+		rest.WithMiddlewares(
+			[]rest.Middleware{serverCtx.AuthMiddleware},
+			[]rest.Route{
+				{
+					// 获取图片
+					Method:  http.MethodGet,
+					Path:    "/asset/:imageId",
+					Handler: private.AssetHandler(serverCtx),
+				},
+				{
+					// 聊天
+					Method:  http.MethodGet,
+					Path:    "/chatting/:npcName",
+					Handler: private.ChattingHandler(serverCtx),
+				},
+				{
+					// 上传图片
+					Method:  http.MethodPost,
+					Path:    "/chatting/:npcName",
+					Handler: private.ChattingUploadHandler(serverCtx),
+				},
+				{
+					// Ping
+					Method:  http.MethodGet,
+					Path:    "/ping",
+					Handler: private.PingHandler(serverCtx),
+				},
+				{
+					// 工作
+					Method:  http.MethodGet,
+					Path:    "/work",
+					Handler: private.WorkHandler(serverCtx),
+				},
+			}...,
+		),
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
 	)
 

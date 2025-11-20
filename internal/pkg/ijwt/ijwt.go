@@ -25,7 +25,7 @@ func (r *JWTHandlerImpl) SetJWTToken(cp ClaimParams) (string, error) {
 	uc := UserClaims{
 		Username: cp.Username,
 	}
-	token := jwt.NewWithClaims(jwt.SigningMethodES256, &uc)
+	token := jwt.NewWithClaims(jwt.SigningMethodHS256, &uc)
 	tokenStr, err := token.SignedString(r.Secret)
 	if err != nil {
 		return "", err

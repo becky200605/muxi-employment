@@ -128,8 +128,9 @@ service muxiEmployment {
 }
 
 @server (
-	jwt:   Auth
-	group: "private"
+	jwt:        Auth
+	middleware: AuthMiddleware
+	group:      "private"
 )
 service muxiEmployment {
 	@doc "工作"
