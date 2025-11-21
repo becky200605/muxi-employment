@@ -1,4 +1,4 @@
-FROM golang:alpine AS builder
+FROM golang:1.25.3-alpine AS builder
 
 LABEL stage=gobuilder
 
@@ -27,4 +27,4 @@ WORKDIR /app
 COPY --from=builder /app/muxiemployment /app/muxiemployment
 COPY ./etc /app/etc
 
-CMD ["./muxiemployment", "-f", "etc/example.yaml"]
+CMD ["./muxiemployment", "-f", "etc/muxi_employment.yaml"]
