@@ -27,7 +27,7 @@ func NewLogLogic(ctx context.Context, svcCtx *svc.ServiceContext) *LogLogic {
 }
 
 func (l *LogLogic) Log() (resp *types.Response, err error) {
-	encoded:=base64.StdEncoding.EncodeToString([]byte(l.svcCtx.Config.User.Password))
+	encoded := base64.StdEncoding.EncodeToString([]byte(l.svcCtx.Config.User.Password))
 	resp = &types.Response{
 		Code:    200,
 		Message: "success",
@@ -38,7 +38,7 @@ func (l *LogLogic) Log() (resp *types.Response, err error) {
 			Logs: []string{
 				"[INFO] 2025-11-20 09:21:56 用户 'root' 登录失败",
 				"[ERROR] 无法读取 image: 72.jpg",
-				"[INFO] npc-Lu 成功通关《丝之歌》第一结局，用时 72 小时",
+				"[INFO] npc-lu 成功通关《丝之歌》第一结局，用时 72 小时",
 				"[WARN] base64-cult: new believer registered",
 				fmt.Sprintf("[INFO] user=alpha debug-mode=true password=%s", encoded),
 				"[INFO] 内部虚拟助手 “Archives-72” 请求查看通关纪念图",
